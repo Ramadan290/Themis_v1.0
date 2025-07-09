@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll History</title>
+  <link rel="icon" href="icon2.png" type="image/jpg">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <h1>Payroll History</h1>
+
+  <!-- Username Filter (Admin/HR only) -->
+  <div class="section" id="filter-section" style="margin-bottom: 20px;">
+    <h3>Search Payroll History by Username</h3>
+    <input type="text" id="filterUsername" placeholder="Enter Username">
+    <button onclick="fetchHistoryByUsername()">Search</button>
+    <button onclick="loadDefaultHistory()">Reset</button>
+  </div>
+
+  <!-- History Table -->
+  <div class="section">
+    <h3>Archived Payroll Records</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Username</th>
+          <th>Role</th>
+          <th>Period</th>
+          <th>Final Salary</th>
+          <th>Status</th>
+          <th>Recorded At</th>
+        </tr>
+      </thead>
+      <tbody id="history-table-body">
+        <!-- JS will fill this -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="hr_payroll_history.js"></script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+    :root {
+      --primary-color: #005B96;
+      --accent-color: #FFD700;
+      --text-color: #111111;
+      --bg-color: #ffffff;
+      --section-bg: #f9f9f9;
+      --border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+
+    .box-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .nav-box {
+      background: var(--section-bg);
+      border: 2px solid var(--border-color);
+      padding: 2rem;
+      border-radius: 12px;
+      width: 280px;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .nav-box:hover {
+      background-color: var(--accent-color);
+      color: var(--text-color);
+      transform: translateY(-5px);
+    }
+
+        :root {
+      --primary-color: #005B96;
+      --accent-color: #FFD700;
+      --text-color: #111111;
+      --bg-color: #ffffff;
+      --section-bg: #f9f9f9;
+      --border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      text-align: center;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+
+    .section {
+      background: var(--section-bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .section input {
+      padding: 0.8rem;
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section button {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-bottom: 1rem;
+    }
+
+    .section button:hover {
+      background-color: var(--accent-color);
+      color: var(--primary-color);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 0.8rem;
+      text-align: left;
+    }
+
+    th {
+      background: #f0f8ff;
+      color: var(--primary-color);
+    }
+
+    tr:hover td {
+      background: #f9f9f9;
+    }
+
+
+    /* Optional: if you want to keep the page neat while still "default looking" */
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+input {
+  margin: 5px;
+  padding: 5px;
+}
+
+:root {
+  --primary-color: #005B96;
+  --accent-color: #FFD700;
+  --background-color: #FFFFFF;
+  --table-header-bg: #e6f2ff;
+  --table-border: #ccc;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: var(--background-color);
+  padding: 40px;
+  max-width: 1000px;
+  margin: auto;
+  color: #000;
+}
+
+h1 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 40px;
+  border-bottom: 2px solid var(--accent-color);
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+h4 {
+  margin-top: 40px;
+  color: #111;
+}
+
+input {
+  padding: 8px;
+  margin: 4px;
+  font-size: 14px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #003f6b;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid var(--table-border);
+}
+
+th {
+  background-color: var(--table-header-bg);
+  color: var(--primary-color);
+}
+
+td button {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+
+/* Dropdown Styling */
+select {
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: #fff;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-right: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+}
+
+/* Comment input styling */
+input[type="text"] {
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  width: 180px;
+  margin-right: 6px;
+}
+
+/* Submit button next to dropdown */
+td button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 7px 12px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+td button:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+
+.section input#username-filter {
+  width: 220px;
+  margin-right: 10px;
+}
+
+.section button {
+  margin-top: 0;
+}
+

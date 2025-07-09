@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Training Management</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Training Management</h1>
+
+    <!-- Add New Training Course -->
+    <h2>Add Training Course</h2>
+    <form id="add-course-form">
+      <label for="courseName">Course Name:</label>
+      <input type="text" id="courseName" required>
+
+      <label for="skillTargeted">Targeted Skill:</label>
+      <input type="text" id="skillTargeted" required>
+
+      <label for="difficultyLevel">Difficulty Level (1-5):</label>
+      <input type="number" id="difficultyLevel" min="1" max="5" required>
+
+      <label for="cost">Cost:</label>
+      <input type="number" id="cost" step="0.01" required>
+
+      <label for="duration">Duration (days):</label>
+      <input type="number" id="duration" required>
+
+      <button type="submit">Add Course</button>
+    </form>
+
+    <!-- List of All Courses -->
+    <h2>All Training Courses</h2>
+    <table id="courseTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Skill</th>
+          <th>Level</th>
+          <th>Cost</th>
+          <th>Duration</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <!-- Assign Training -->
+    <h2>Assign Training</h2>
+    <form id="assign-training-form">
+      <label for="assignUsername">Username:</label>
+      <input type="text" id="assignUsername" required>
+
+      <label for="trainingCourseName">Course Name:</label>
+      <select id="trainingCourseName" required>
+        <option value="" disabled selected>Select a course</option>
+      </select>
+
+      <button type="submit">Assign</button>
+    </form>
+
+    <!-- Check Training Status -->
+    <h2>Check Training Status</h2>
+    <form id="check-status-form">
+      <label for="checkUsername">Username:</label>
+      <input type="text" id="checkUsername" required>
+
+      <button type="submit">Check Status</button>
+      <button type="button" id="hideResultsBtn">Hide Results</button>
+    </form>
+
+    <table id="userTrainingTable" class="hidden-table">
+      <thead>
+        <tr>
+          <th>Training ID</th>
+          <th>Course ID</th>
+          <th>Completed</th>
+          <th>Progress (%)</th>
+          <th>Score</th>
+          <th>Cost</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="hr_training_management.js"></script>
+</body>
+</html>

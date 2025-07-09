@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HR Attendance Management</title>
+  <link rel="icon" href="icon2.png" type="image/jpg">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="hr_attendance.js" defer></script>
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+  <h2>HR Attendance Management</h2>
+
+  <!-- Live Sheet Filter -->
+  <h3>Live Attendance Sheet</h3>
+  <div class="filter-box">
+    <div class="input-group">
+      <label for="filter-live-username">Username:</label>
+      <input type="text" id="filter-live-username" placeholder="Search username">
+
+      <label for="filter-live-from">From:</label>
+      <input type="date" id="filter-live-from">
+
+      <label for="filter-live-to">To:</label>
+      <input type="date" id="filter-live-to">
+    </div>
+
+    <div class="radio-group">
+      <input type="radio" name="live-status" value="" id="live-all" checked hidden>
+      <label for="live-all">All</label>
+
+      <input type="radio" name="live-status" value="present" id="live-present" hidden>
+      <label for="live-present">Present</label>
+
+      <input type="radio" name="live-status" value="absent" id="live-absent" hidden>
+      <label for="live-absent">Absent</label>
+
+      <input type="radio" name="live-status" value="late" id="live-late" hidden>
+      <label for="live-late">Late</label>
+
+      <input type="radio" name="live-status" value="none" id="live-none" hidden>
+      <label for="live-none">None</label>
+    </div><br>
+
+    <br><br><button onclick="filterLiveAttendance()">Search</button>
+  </div>
+
+  <button class="toggle-button" onclick="toggleSection('liveAttendanceTable', this)">Hide Sheet</button>
+  <table id="liveAttendanceTable">
+    <thead>
+      <tr>
+        <th>Attendance ID</th>
+        <th>Username</th>
+        <th>Date</th>
+        <th>Session</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="liveAttendanceBody">
+      <tr><td colspan="5">Loading...</td></tr>
+    </tbody>
+  </table>
+
+  <!-- History Filter -->
+  <h3>Attendance History</h3>
+  <div class="filter-box">
+    <div class="input-group">
+      <label for="filter-history-username">Username:</label>
+      <input type="text" id="filter-history-username" placeholder="Search username">
+
+      <label for="filter-history-from">From:</label>
+      <input type="date" id="filter-history-from">
+
+      <label for="filter-history-to">To:</label>
+      <input type="date" id="filter-history-to">
+    </div>
+
+    <div class="radio-group">
+      <input type="radio" name="history-status" value="" id="history-all" checked>
+      <label for="history-all">All</label>
+
+      <input type="radio" name="history-status" value="present" id="history-present">
+      <label for="history-present">Present</label>
+
+      <input type="radio" name="history-status" value="absent" id="history-absent">
+      <label for="history-absent">Absent</label>
+
+      <input type="radio" name="history-status" value="late" id="history-late">
+      <label for="history-late">Late</label>
+
+      <input type="radio" name="history-status" value="none" id="history-none">
+      <label for="history-none">None</label>
+    </div><br><br>
+
+    <br><button onclick="filterHistoryAttendance()">Search</button>
+  </div>
+
+  <button class="toggle-button" onclick="toggleSection('historyAttendanceTable', this)">Hide History</button>
+  <table id="historyAttendanceTable">
+    <thead>
+      <tr>
+        <th>Attendance ID</th>
+        <th>Username</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Logged At</th>
+      </tr>
+    </thead>
+    <tbody id="historyAttendanceBody">
+      <tr><td colspan="5">Loading...</td></tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

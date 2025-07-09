@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Performance Prediction</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Performance Prediction</h2>
+
+    <!-- Input bar -->
+    <div class="filter-box">
+      <input type="number" id="userIdInput" placeholder="Enter User ID" />
+      <button onclick="predictPerformance()">Predict</button>
+      <button onclick="viewPerformanceHistory()">View History</button>
+    </div>
+
+    <!-- History Box -->
+    <div id="historyBox" class="portal-box" style="display: none;">
+      <h3>Performance Prediction History</h3>
+      <ul id="historyList"></ul>
+    </div>
+
+    <!-- Prediction result -->
+    <div id="resultBox" class="portal-box" style="display: none;">
+      <h3>Prediction Result</h3>
+      <p id="predictionOutput"></p>
+
+      <!-- Dynamic buttons appear here -->
+      <div id="actionBox" style="display: none; margin-top: 1rem;"></div>
+    </div>
+
+    <!-- User list -->
+    <h3>All Users</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Username</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody id="userTableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- JS Logic -->
+  <script src="performance_prediciton.js"></script>
+</body>
+</html>

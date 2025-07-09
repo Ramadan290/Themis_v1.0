@@ -1,0 +1,459 @@
+
+Prediction Models 
+
+=============================================================================================================================================
+
+Objective:
+
+	The goal of the AI phase in Themis is to introduce intelligent prediction capabilities into the existing HR system. These models will 	support fair, data-driven decision-making across critical human-centered domains, such as performance forecasting, attrition risk, and 	promotion readiness.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Shift in Strategy :
+
+	In earlier project phases, attempts were made to predefine input/output schemas before implementing the underlying model logic. This	 	approach led to unnecessary trial-and-error cycles and friction in aligning real data with fixed interfaces. For the AI phase, we adopt 	a reversed and more flexible strategy:
+
+Implement the model first, define the schema later based on real outcomes.
+
+This change reflects an evolved understanding of how deep learning workflows behave in practice.
+
+
+Lessons from the Past - Stanford Dogs Project :
+
+	A pivotal insight came from the Stanford Dogs classification project, where model performance was limited not by architecture, but by 	dataset size and diversity. Despite using deep models, overfitting occurred rapidly due to the fine-grained nature of the task and the 	small number of samples per class. A key realization was that transfer learning worked well because the model began training from a 	well-optimized pretrained state, which helped it converge to a suboptimal yet acceptable point in the loss surface. This validated the 	importance of data richness and proper initialization over raw model complexity.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Architecture Choice:
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Models 
+
+==============================================================================================================================================
+
+Performance Prediction :
+
+	Objective --> Predict employee performance for the upcoming period of time
+	
+	Inputs : 
+		- attendance_rate  ✅
+		- num_penalties  ✅
+		- num_raise_requests  ✅
+		- appraisal_amount ✅
+		- num_sick_notes ✅
+		- benefits  ✅
+		- months_at_company ✅
+		- completion_rate  ✅
+		- past-performance_score ✅
+		- sentiment_score ✅
+
+	Output : 
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Attrition Risk :
+
+	Objective --> Predict the risk of an employee leaving the company
+
+	Inputs : 	
+		- age ✅
+		- gender ✅
+		- marital_status ✅
+		- months_at_company ✅
+		- num_appraisals ✅
+		- base_salary ✅
+		- num_penalties ✅
+		- num_raise_requests ✅
+		- num_benefits ✅
+		- past_performance_scroe✅
+		- sentiment_score✅
+		- attendance_rate ✅
+		- completion_rate✅
+
+	Output : 
+		Target [0-3] - 4 class problem
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Benefit-to-Cost Ratio :
+
+	Objective -->  Estimate how much benefit a company gains from an employee relative to the cost of employing them.
+
+	Inputs :
+		- Base_Salary  ✅
+		- num_appraisals ✅
+		- num_benefits ✅
+		- num_raise_requests ✅
+		- completion_rate✅
+		- past_performance_score✅
+		- skills✅
+		- cost_of_training✅
+	
+	Output : 
+		Target --> Range float between 0-1
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Sentiment Score  :
+
+	Objective --> A measure that will be used to try and measure the degree of satisfaction or dissatisfaction of an employee
+	
+	Inputs :
+
+	DB obtainable : 
+
+		- Base_Salary  ✅ (ex 8000.00)
+		- num_raise_requests ✅(ex . 7)
+		- num_appraisals ✅ (ex . 3)
+		- num_benefits ✅ (ex . 4 )
+		- num_penalties  (ex . 5)
+		- past_performance_score✅ ([0,1,2,3])
+		- num_skills✅ (ex. 6)
+		- cost_of_training✅ (ex . 1300)
+		- has training  ✅ (ex, yes or no)
+		- attrition_risk ✅ ([0,1,2,3])
+		- Age ✅ (ex. (45) )
+		- Marital Status ✅ (Married , single . Divorced)
+		- attednance_rate ✅
+		- num_sick notes (ex. 4 )✅
+
+
+
+
+		- hours_present_per_day
+		- workstation_time
+		- meetings attended
+		- Wandering time
+		- Break time
+		- stress level (dont include this its  in another table)
+		- total_num_of_interactions(dont include this its  in another table)
+		- num_conflicts_involved
+
+		- collaboration_score (calculated)
+
+		- comments (dont include this its  in another table)
+		- recorded speech / positive(ex. positive text)
+		- recorded speech negative (ex. negative text)
+
+		- interactions example (ex text) (calculated)
+
+		- meeting ideas (ex, ideas)
+		- movement type (just classify some movement types)
+		- sitting posture (classify sitting postures)
+		- negative_body_language_signal_score (give a 0 to 1 score float)
+		- positive_body_language_signal_score (give a 0 to 1 score float)
+
+
+	Output :
+
+		Sentiment_score --> [0,1,2,3,4] - SoftMax output
+
+
+
+
+🧠 What This Adds to the Model:
+Category	Features You Can Derive
+Social Behavior	Conversation frequency, tone, conflict
+Physical Cues	Stress signals, absences, movement types
+Work Engagement	Desk time, meeting participation
+Isolation Index	Low interaction time, high roaming time
+Mood Patterns	Negative sentiment in speech + motion
+		
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Role-Fitting :
+
+	Departments and Their Skills
+HR
+communication
+
+conflict resolution
+
+emotional intelligence
+
+interviewing
+
+performance review
+
+compliance
+
+team coordination
+
+IT
+python
+
+java
+
+c++
+
+networking
+
+cybersecurity
+
+cloud computing
+
+database design
+
+linux
+
+api development
+
+version control
+
+CI/CD
+
+microservices
+
+docker
+
+tensorflow
+
+react
+
+Finance
+accounting
+
+budgeting
+
+financial analysis
+
+forecasting
+
+cost control
+
+excel modeling
+
+investment analysis
+
+compliance auditing
+
+Marketing
+branding
+
+seo
+
+content creation
+
+social media
+
+copywriting
+
+campaign strategy
+
+market research
+
+email marketing
+
+ad management
+
+Sales
+negotiation
+
+customer relationship management
+
+lead generation
+
+cold calling
+
+presentation skills
+
+product knowledge
+
+sales strategy
+
+Legal
+contract law
+
+compliance
+
+litigation
+
+legal research
+
+intellectual property
+
+risk assessment
+
+Operations
+process optimization
+
+supply chain management
+
+lean methodology
+
+quality control
+
+project coordination
+
+Logistics
+inventory control
+
+shipping
+
+route planning
+
+fleet management
+
+vendor relations
+
+Procurement
+supplier evaluation
+
+purchase order management
+
+cost negotiation
+
+contract negotiation
+
+sourcing strategy
+
+Customer Support
+ticket resolution
+
+crm tools
+
+product knowledge
+
+live chat
+
+call handling
+
+patience
+
+empathy
+
+Training
+curriculum design
+
+e-learning tools
+
+public speaking
+
+assessment design
+
+skill evaluation
+
+R&D
+prototyping
+
+innovation
+
+data analysis
+
+scientific method
+
+hypothesis testing
+
+technical writing
+
+Product
+roadmapping
+
+requirement analysis
+
+agile
+
+scrum
+
+stakeholder communication
+
+Engineering
+system architecture
+
+circuit design
+
+hardware troubleshooting
+
+firmware
+
+matlab
+
+solidworks
+
+QA
+test planning
+
+bug tracking
+
+automated testing
+
+selenium
+
+test case design
+
+Security
+penetration testing
+
+firewall configuration
+
+incident response
+
+access control
+
+encryption
+
+Design
+photoshop
+
+illustrator
+
+figma
+
+ux/ui
+
+color theory
+
+typography
+
+Content
+blog writing
+
+editing
+
+seo writing
+
+tone matching
+
+headline crafting
+
+Admin
+scheduling
+
+document management
+
+meeting coordination
+
+office tools
+
+record keeping
+
+visitor handling
+
+Business Intelligence
+data visualization
+
+sql
+
+power bi
+
+data warehousing
+
+etl
+
+kpi tracking
+
+
+
+
+

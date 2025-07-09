@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fixed Salary Management</title>
+  <link rel="icon" href="icon2.png" type="image/jpg">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <h1>Fixed Salary Management</h1>
+
+  <!-- Generate Base Salaries -->
+  <div class="section">
+    <h3>Generate Fixed Salaries (for all users)</h3>
+    <input type="number" id="defaultSalary" placeholder="Default Salary">
+    <button onclick="generateFixedSalaries()">Generate</button>
+  </div>
+
+<!-- Update Fixed Salary -->
+<div class="section">
+  <h3>Update Fixed Salary</h3>
+  <input type="number" id="updateUserId" placeholder="User ID">
+  <input type="number" id="updateSalary" placeholder="New Salary">
+  <button onclick="updateFixedSalary()">Update Salary</button>
+</div>
+
+  <!-- Table of Fixed Salaries -->
+  <div class="section">
+    <h3>All Fixed Salaries</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Username</th>
+              <th>Role</th>
+            <th>Base Salary</th>
+
+        </tr>
+      </thead>
+      <tbody id="payroll-table-body">
+        <!-- Filled dynamically by JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="hr_payroll_fixed.js"></script>
+</body>
+</html>

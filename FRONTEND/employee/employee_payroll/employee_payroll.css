@@ -1,0 +1,185 @@
+:root {
+  --primary-color: #005B96;
+  --accent-color: #FFD700;
+  --background-color: #FFFFFF;
+  --text-color: #000000;
+  --table-bg: #f2f9ff;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+h2, h3 {
+  color: var(--primary-color);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+section {
+  background: var(--table-bg);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+ul {
+  padding-left: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+th, td {
+  border: 1px solid var(--primary-color);
+  padding: 0.8rem;
+  text-align: left;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+button {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #e6c200;
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  main {
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
+
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.info-card {
+  background: #ffffff;
+  border-left: 6px solid var(--primary-color);
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.info-card p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+
+/* === Payroll Section Styling === */
+#payroll-details h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+#payroll-details h3 {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  border-left: 4px solid var(--primary-color);
+  padding-left: 0.6rem;
+}
+
+#payroll-details p {
+  font-size: 1rem;
+  padding: 0.4rem 0.6rem;
+  background-color: #ffffff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 6px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Reuse existing info-section and info-card for consistency */
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.info-card {
+  background: #ffffff;
+  border-left: 6px solid var(--primary-color);
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-card span.label {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.empty-message {
+  font-style: italic;
+  color: #777;
+  padding-left: 1rem;
+}

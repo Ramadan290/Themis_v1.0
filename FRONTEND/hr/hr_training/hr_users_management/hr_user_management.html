@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Skills Viewer</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>View User Skills</h1>
+
+    <form id="user-skill-form">
+      <label>Username:</label>
+      <input type="text" id="skillUsername" required>
+      <button type="submit">View Skills</button>
+      <button type="button" id="hideSkillsBtn">Hide Results</button>
+    </form>
+
+    <table id="userSkillTable" class="hidden-table">
+      <thead>
+        <tr>
+          <th>Skill</th>
+          <th>Skill Level</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="hr_user_management.js"></script>
+</body>
+</html>

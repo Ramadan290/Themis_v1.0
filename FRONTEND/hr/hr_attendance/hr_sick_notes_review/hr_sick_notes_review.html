@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sick Notes Management</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script defer src="hr_sick_notes_review.js"></script>
+</head>
+<body>
+</head>
+<body>
+
+  <h2>Pending Sick Notes</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Employee</th>
+          <th>Attendance ID</th>
+          <th>Reason</th>
+          <th>Status</th>
+          <th>Comments</th>
+          <th>Submitted</th>
+          <th>Review</th>
+        </tr>
+      </thead>
+      <tbody id="sickNotesBody">
+        <!-- Pending sick notes will render here -->
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Reviewed Sick Notes</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Employee</th>
+          <th>Attendance ID</th>
+          <th>Reason</th>
+          <th>Status</th>
+          <th>Comments</th>
+          <th>Submitted</th>
+        </tr>
+      </thead>
+      <tbody id="reviewedNotesBody">
+        <!-- Approved/Rejected sick notes will render here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="sick_notes.js"></script>
+</body>
+</html>

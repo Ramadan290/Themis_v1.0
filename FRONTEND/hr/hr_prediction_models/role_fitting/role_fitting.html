@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Role Fitting Prediction</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Department Fit Prediction</h2>
+
+    <!-- Input bar -->
+    <div class="filter-box">
+      <input type="number" id="userIdInput" placeholder="Enter User ID" />
+      <button onclick="predictRoleFit()">Predict</button>
+    </div>
+
+    <!-- Result box -->
+    <div id="resultBox" class="portal-box" style="display: none;">
+      <h3>Prediction Result</h3>
+      <p id="fitScore" style="font-size: 1.3rem; font-weight: bold;"></p>
+      <p id="decisionText"></p>
+      <p id="messageText" style="margin-top: 1rem;"></p>
+
+      <!-- Action section -->
+      <div id="actionBox" style="display: none; margin-top: 1.5rem;"></div>
+    </div>
+
+    <!-- All users table -->
+    <h3>All Users</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Username</th>
+          <th>Role</th>
+          <th>Department</th>
+        </tr>
+      </thead>
+      <tbody id="userTableBody"></tbody>
+    </table>
+  </div>
+
+  <script src="role_fitting.js"></script>
+</body>
+</html>

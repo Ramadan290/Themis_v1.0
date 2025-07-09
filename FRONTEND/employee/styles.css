@@ -1,0 +1,185 @@
+/************************************************** Common Styles ***************************************************/
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+}
+
+header, .portal-header {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header button, .portal-header button {
+  background-color: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+header button:hover, .portal-header button:hover {
+  background-color: #e64444;
+}
+
+.portal-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+
+
+.portal-box:hover {
+  transform: scale(1.05);
+}
+
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+/************************************************** Attendance Page ***************************************************/
+
+.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4caf50; /* Default success color */
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.notification.error {
+  background-color: #f44336; /* Red for errors */
+}
+
+.notification.hidden {
+  opacity: 0;
+}
+
+/************************************************** Payroll Page ***************************************************/
+
+#payroll-details {
+  margin-top: 20px;
+}
+
+#payroll-details p {
+  font-size: 1.1em;
+  margin: 5px 0;
+}
+
+#raise-request {
+  margin-top: 30px;
+}
+
+#raise-history table {
+  margin-top: 20px;
+}
+
+#raise-history th, #raise-history td {
+  text-align: left;
+}
+
+/************************************************** News Page ***************************************************/
+
+.news-item {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.news-item h3 {
+  margin: 0;
+}
+
+.news-item button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.news-item button:hover {
+  background: #45a049;
+}
+
+#news-details {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+#comments-list {
+  list-style: none;
+  padding: 0;
+}
+
+#comments-list li {
+  margin-bottom: 10px;
+}

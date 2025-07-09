@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Raise Requests</title>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <h1>Raise Requests</h1>
+
+  <div style="margin-bottom: 20px;">
+    <input type="text" id="usernameFilter" placeholder="Filter by username" oninput="applyUsernameFilter()">
+  </div>
+<style>
+  .gray-out-table td {
+  opacity: 0.5;
+  pointer-events: none;
+}
+</style>
+  <table>
+    <thead>
+      <tr>
+        <th>Request ID</th>
+        <th>Username</th>
+        <th>Requested Amount</th>
+        <th>Reason</th>
+        <th>Status</th>
+        <th>Requested At</th>
+        <th>Review Comment</th>
+        <th>Decision</th>
+      </tr>
+    </thead>
+    <tbody id="raise-requests-body"></tbody>
+  </table>
+  <h2 style="margin-top: 40px;">Reviewed Requests</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Request ID</th>
+      <th>Username</th>
+      <th>Requested Amount</th>
+      <th>Reason</th>
+      <th>Status</th>
+      <th>Requested At</th>
+      <th>Review Comment</th>
+    </tr>
+  </thead>
+  <tbody id="reviewed-requests-body" class="gray-out-table"></tbody>
+</table>  
+
+  <script src="hr_raise_requests.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+
+Features List :
+=========================================================================================================================
+
+
+Payroll : 
+
+ - Adding a payroll (Admin & HR)
+ - getting a payroll by id 
+ - getting all payrolls (Admin & HR)- we will load 20 records then allow filters and displauy more options 
+ - Updating payroll - this is going to be overwriting the existing payroll and will use payroll-history (Admin & HR(cant update his own        payroll))
+ - Deleting a payroll (Admin only )
+
+----------------------------------------------------------------------------------------------
+
+Raise-Requests : 
+ 
+ - Applying for a raise-request (HR & employee)
+ - Approve or reject payroll (Admin & HR) - HR cant approve or reject his own payroll
+ - Writing a review comment this can be paired with approval or rejection
+
+----------------------------------------------------------------------------------------------
+
+Appraisals : 
+
+ - Adding an appraisal (Admin & HR(cant add an appraisal for himself))
+ - deleting an appraisal (Admin only)
+
+-----------------------------------------------------------------------------------------------
+
+Benefits : 
+ 
+ - Adding a Benefit (Admin & HR (cant edit his own))
+ - Deleting a Benefit (Admin & HR(cant edit his own))
+ - Fixed benefits for each employee (could be handles in frotned instead as a hidden value)
+
+---------------------------------------------------------------------------------------------------
+
+Penalties :
+
+ - Adding a Penalty with review comment (HR Only(cant add for himself))
+ - Removing a Penalty (Admin & HR)
+ - Employee enquiring about penalty or in other words revolting against it (Optional)
+
+----------------------------------------------------------------------------------------------
+
+User Module : 
+
+	1 - User 
+ 		- Creating a new user (Admin & HR only)
+ 		- logging in to an existing account (Admin , HR & Employee)
+
+	2 - Access Tokens and Authorization
+ 		- Token generation 
+ 		- Refresh Token Generation
+ 		- User id generation to a readable format form db - there will be 3 formats each to represent employee , hr and admin
+
+
+
+-----------------------------------------------------------------------------------
+
+Attendance Module : 
+
+We will separate the concerns by creating 2 attendance table in the database , one will be dynamically generated and overwritten and will be fed to the historical attendance table which will store all data required for analysis this way we would have simplified the logic and made HR tasks even more clear and easy .
+
+
+	1 - Attendance-Dynamic : 
+
+		- Generate an Attendance Sheet
+ 		- Generate QR code for attendance (automatic (update each hour))
+ 		- User can log his attendance using a scan qr code (HR & Employee)
+ 		- Getting attendance records (HR & Admin)
+ 		- Updating attendance records{present , late , absent} (HR & Admin)
+ 		- deleting an attendance record
+ 		- Overwritten at the end of the day and fed to Attendance-Historical 
+
+	2 - Attendance-Historical : 
+
+		- Stores data fed from Attendance-Dynamic 
+		- Organized Fields , ready for analysis
+
+	3 - Sick - Notes
+		 
+		- Applying a Sick Note (Employee & HR)
+		- accepting and rejecting sick note with a review comment (HR only)
+		- Included in a separate db table will be applied and updated separately
+		- will be updated only in attendance-historical it will be like a flag that overrides late and absent status
+
+
+Keep in mind that user can log many attendances and attendances are linked to one user , so its a one to many relationship , the one being the user
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+News Module :
+
+Simple news and comments linked together , we will try storing it in our db as its relational it will be too organized with fixed schematics but we will rethink it later in a non relational database structure as it would fit it more . 
+
+	1 - news : 
+
+ 		- Adding News (Admin & HR )
+ 		- Removing News (Admin & HR)
+
+	2 - comments : 
+
+ 		- posting a comment on news (all)
+ 		- deleting comment (employee & admin)
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Payroll Module : 
+
+We will separate the concerns by using a payroll history table and another table for payroll , payroll sheet will be fed into the payroll history table when its time is done or when admin applies it we will decide that .
+
+	1 - Payroll :
+
+		- Will include Current payroll data this will be volatile meaning it can be updated at anytime 
+		- payroll will be created for each user on the user table same way we did attendance 
+		- appraisal and penalties will be applied here as its volatile as a one time thing 
+
+	2 - Payroll - Fixed : 
+		
+		- Will include the base salary 
+		- Will include link to benefits and raise-requests as those are stationery data 
+		
+		
+	
+	2 - Payroll - History : 
+		
+		- An append only table data inside it will be non volatile
+		- will be used for analysis mainly 
+
+	3 - Appraisals : 
+	
+		- Added by HR or when a certain condition is met 
+		- linked to payroll or payroll history through user id	
+		- a one time thing unlike raise-requests that is stuck to payroll
+
+	4 - Benefits : 
+		
+		- In the controller we will create 3 stationery benefits for everyone . , rest will be in frontend to add
+		- Beenfits can be dynamically added by HR or Admin
+		- Benefits will be linked to payroll through user id
+	
+	5 - raise-requests : 
+
+		- Raise requests can be applied by employee or hr
+		- employee or hr cant submit a raise requests that exceeds 15% of his current salary 	
+		- hr cant approve his own raise-request it will be up to admin 
+		- hr can approve or reject the raise request and write a review comment on it , raise will then be submitted and added to 				payroll
+		- linked to payroll through user id
+	
+	6 - Penalties : 
+
+		- Can be added by HR or Admin 
+		- HR cant penalty himself
+		- Penalty is deducted from payroll not payroll history 
+		- Penalty is a one time thing unlike raise requests that is stuck to payroll
+
+
+

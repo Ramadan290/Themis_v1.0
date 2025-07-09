@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Dashboard</title>
+  <style>
+    :root {
+      --primary-color: #005B96;
+      --accent-color: #FFD700;
+      --text-color: #000000;
+      --card-bg: #ffffff;
+    }
+
+    body {
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    h2, h3 {
+      color: var(--accent-color);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      text-align: center;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    #employee-info p, .metric p {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    #employee-info strong, .metric strong {
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Employee Dashboard</h2>
+    
+    <div id="employee-info">
+      <p><strong>Name:</strong> <span id="name"></span></p>
+      <p><strong>Department:</strong> <span id="department"></span></p>
+      <p><strong>Status:</strong> <span id="status"></span></p>
+      <p><strong>Marital Status:</strong> <span id="marital_status"></span></p>
+    </div>
+
+    <div class="metric">
+      <h3>Performance</h3>
+      <p><strong>Task Completion Rate:</strong> <span id="completion_rate"></span>%</p>
+    </div>
+
+    <div class="metric">
+      <h3>Attendance</h3>
+      <p><strong>Days Present:</strong> <span id="days_present"></span></p>
+      <p><strong>Days Absent:</strong> <span id="days_absent"></span></p>
+      <p><strong>Days Late:</strong> <span id="days_late"></span></p>
+    </div>
+
+    <div class="metric">
+      <h3>Payroll</h3>
+      <p><strong>Salary:</strong> $<span id="salary"></span></p>
+      <p><strong>Total Appraisals:</strong> $<span id="total_appraisals"></span></p>
+      <p><strong>Total Penalties:</strong> $<span id="total_penalties"></span></p>
+    </div>
+  </div>
+
+  <script src="employee_status.js"></script>
+</body>
+</html>

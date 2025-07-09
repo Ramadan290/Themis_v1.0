@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Register to access projects" />
+  <title>Themis System</title>
+  <link rel="icon" href="../../assets/icon2.png" type="image/jpg" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="user_creation.css" />
+</head>
+<body>
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <form id="register-form">
+    <h3>User Creation</h3>
+
+    <label for="username">Username</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      placeholder="Choose username"
+      required
+    />
+
+    <label for="password">Password</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Create password"
+      required
+    />
+
+    <label for="confirm-password">Confirm Password</label>
+    <input
+      type="password"
+      id="confirm-password"
+      name="confirm-password"
+      placeholder="Confirm password"
+      required
+    />
+
+    <label for="role">Role</label>
+    <select id="role" name="role" class="role" required>
+    <option value="">Select role</option>
+    <option value="admin">Admin</option>
+    <option value="hr">HR</option>
+    <option value="employee">Employee</option>
+    </select>
+
+    <button type="submit">Create Account</button>
+    <p id="error" style="color: #ff4d4d; margin-top: 15px;"></p>
+    <p id="error-message" style="color: #ff4d4d; margin-top: 15px;"></p>
+
+  </form>
+
+  <script src="user_creation.js"></script>
+</body>
+</html>

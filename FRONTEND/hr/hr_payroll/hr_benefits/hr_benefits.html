@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incentives Management</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <h1>Benefits & Incentives</h1>
+
+  <!-- Add to Benefit Catalog -->
+  <div>
+    <h4>Add Benefit to Catalog</h4>
+    <input type="text" id="benefitName" placeholder="Name" />
+    <input type="text" id="benefitDesc" placeholder="Description" />
+    <input type="number" id="benefitAmount" placeholder="Amount" />
+    <button onclick="addBenefitToCatalog()">Add</button>
+  </div>
+
+  <!-- Benefit Catalog Table -->
+  <div>
+    <h4>Benefit Catalog</h4>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="catalogTableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Assign Benefit to User -->
+  <div>
+    <h4>Assign Benefit to User</h4>
+    <input type="text" id="assignUsername" placeholder="Username" />
+    <input type="number" id="assignBenefitId" placeholder="Benefit Catalog ID" />
+    <button onclick="assignBenefitToUser()">Assign</button>
+  </div>
+
+  <!-- Fetch Benefits for User -->
+  <div>
+    <h4>Fetch Benefits by Username</h4>
+    <input type="text" id="fetchUsername" placeholder="Username" />
+    <button onclick="fetchUserBenefits()">Fetch</button>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Benefit ID</th>
+          <th>Catalog ID</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody id="userBenefitsTableBody"></tbody>
+    </table>
+  </div>
+
+  <script src="hr_benefits.js"></script>
+</body>
+</html>

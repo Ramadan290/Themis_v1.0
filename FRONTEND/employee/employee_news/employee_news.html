@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News</title>
+  <link rel="icon" href="icon2.png" type="image/jpg">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #005B96;
+      --accent-color: #FFD700;
+      --background-color: #FFFFFF;
+      --text-color: #000000;
+      --card-bg: #f2f9ff;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    header {
+      padding: 2rem;
+      text-align: center;
+      background-color: var(--primary-color);
+      color: var(--background-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    h2, h3 {
+      color: var(--primary-color);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    #news-list, #news-details {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    #news-details {
+      display: none;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 0.8rem;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    textarea:focus {
+      border-color: var(--accent-color);
+      outline: none;
+    }
+
+    button {
+      background-color: var(--accent-color);
+      color: var(--primary-color);
+      padding: 0.7rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #e6c200;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      main {
+        padding: 1rem;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Company News</h1>
+  </header>
+
+  <main>
+    <section id="news-list">
+      <h2>All News Articles</h2>
+      <div id="news-container"></div>
+    </section>
+
+    <section id="news-details">
+      <h2 id="news-title"></h2>
+      <p id="news-content"></p>
+      <p><strong>Author:</strong> <span id="news-author"></span></p>
+      <p><strong>Date:</strong> <span id="news-date"></span></p>
+
+      <div id="comments-section">
+        <h3>Comments</h3>
+        <ul id="comments-list"></ul>
+        <form id="comment-form">
+          <label for="comment-content">Add a Comment:</label>
+          <textarea id="comment-content" required></textarea>
+          <button type="submit">Submit Comment</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  
+  <script src="employee_news.js"></script>
+</body>
+</html>

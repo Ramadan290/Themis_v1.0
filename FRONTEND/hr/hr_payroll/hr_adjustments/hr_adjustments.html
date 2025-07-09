@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Adjustments - Appraisals & Penalties</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+  <h1>HR - Adjustments</h1>
+
+  <!-- 🔎 Fetch Records by Username -->
+  <div class="section">
+    <h4>Fetch Records by Username</h4>
+    <input type="text" id="username-input" placeholder="Enter Username" />
+    <button onclick="fetchUserAppraisals()">Fetch Appraisals</button>
+    <button onclick="fetchUserPenalties()">Fetch Penalties</button>
+    <div id="appraisal-results"></div>
+    <div id="penalty-results"></div>
+  </div>
+
+  <!-- ➕ Add Appraisal -->
+  <div class="section">
+    <h4>Add Appraisal</h4>
+    <input type="text" id="appraisal-username" placeholder="Username" />
+    <input type="number" id="appraisal-amount" placeholder="Amount" />
+    <button onclick="addAppraisal()">Submit Appraisal</button>
+  </div>
+
+  <!-- ➖ Add Penalty -->
+  <div class="section">
+    <h4>Add Penalty</h4>
+    <input type="text" id="penalty-username" placeholder="Username" />
+    <input type="number" id="penalty-amount" placeholder="Amount" />
+    <input type="text" id="penalty-reason" placeholder="Reason" />
+    <button onclick="addPenalty()">Submit Penalty</button>
+  </div>
+
+  <script src="hr_adjustments.js"></script>
+</body>
+</html>

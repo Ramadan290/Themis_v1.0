@@ -1,0 +1,521 @@
+/************************************************** Common Styles ***************************************************/
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #111111;
+}
+
+/* Base font-family override for some pages */
+body, html {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 2rem;
+  margin: 0;
+}
+
+/* Header styles */
+header, .portal-header {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header button, .portal-header button {
+  background-color: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+header button:hover, .portal-header button:hover {
+  background-color: #e64444;
+}
+
+/* Portal container */
+.portal-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.portal-box {
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.portal-box:hover {
+  transform: scale(1.05);
+}
+
+.portal-box h2 {
+  margin: 0;
+  color: #4caf50;
+}
+
+/* Table base styles */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.6rem;
+  background: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  margin-top: 20px;
+}
+
+th {
+  background: #f2f2f2;
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid #ffd700;
+  color: #005B96;
+}
+
+td {
+  padding: 1rem;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+tr:hover td {
+  background: #f5faff;
+}
+
+/* Links */
+a {
+  color: #005B96;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  color: #ffd700;
+  text-decoration: underline;
+}
+
+/* Forms */
+form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 500;
+  color: #005B96;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  color: #111111;
+  font-size: 1rem;
+  background: #fff;
+  transition: border-color 0.3s;
+}
+
+form input:focus, form textarea:focus {
+  border-color: #005B96;
+  outline: none;
+}
+
+form button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #005B96;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+form button:hover {
+  background-color: #ffd700;
+  color: #005B96;
+}
+
+/* Buttons */
+button {
+  padding: 8px 12px;
+  margin: 4px;
+  cursor: pointer;
+  background: #005B96;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #ffd700;
+  color: #005B96;
+  transform: translateY(-3px);
+}
+
+/* Delete button variant */
+button.delete {
+  background: #d32f2f;
+}
+
+button.delete:hover {
+  background: #a21f1f;
+}
+
+/* Lists */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background: #f9f9f9;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+/* Layout containers */
+.container {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Headings */
+h2, h3 {
+  color: #005B96;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  border-bottom: 2px solid #ffd700;
+  padding-bottom: 1rem;
+  margin-top: 3rem;
+  font-size: 1.8rem;
+}
+
+/* Filter box */
+div.filter-box {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.filter-box input {
+  width: 200px;
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 5px;
+  color: #111111;
+  font-size: 1rem;
+}
+
+/* Collapsible button */
+.collapsible-btn {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: #005B96;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.collapsible-btn:hover {
+  background-color: #ffd700;
+  color: #005B96;
+}
+
+/* Hidden sections and tables */
+.hidden-section, .hidden-table {
+  display: none;
+}
+.radio-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.radio-group input[type="radio"] {
+  display: none;
+}
+
+.radio-group label {
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-weight: 500;
+  color: #005B96;
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+.radio-group label:hover {
+  background-color: #eef6ff;
+}
+
+.radio-group input[type="radio"]:checked + label {
+  background-color: #ffd700;
+  color: white;
+  border: 1px solid #ffd700;
+}
+
+/* Toggle button */
+.toggle-button {
+  margin: 1rem 0;
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  background-color: #005B96;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.toggle-button:hover {
+  background-color: #ffd700;
+  color: #005B96;
+}
+
+/* Sidebar layout */
+.container-panel {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #005B96;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+}
+
+.sidebar h2 {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #ffd700;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  transition: background 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: #ffd700;
+  color: #005B96;
+}
+
+.main-panel {
+  flex-grow: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow-y: auto;
+  background-color: white;
+}
+
+.main-panel h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #005B96;
+}
+
+/* Portal buttons */
+.portal-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.portal-button {
+  background-color: #005B96;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.portal-button:hover {
+  background-color: #ffd700;
+  color: #005B96;
+  transform: translateY(-3px);
+}
+
+/* Logout */
+.logout {
+  margin-top: auto;
+  text-align: center;
+}
+
+.logout a {
+  color: white;
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.logout a:hover {
+  background-color: #ffd700;
+  color: #005B96;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container-panel {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .sidebar a {
+    margin: 0.5rem;
+    flex: 1 1 40%;
+    text-align: center;
+  }
+
+  .logout {
+    order: 1;
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+
+#chart-type-buttons button:last-child {
+  background-color: #d32f2f; /* red */
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 3px 6px rgba(211, 47, 47, 0.8);
+  transition: background-color 0.3s ease;
+}
+
+#chart-type-buttons button:last-child:hover {
+  background-color: #a21f1f; /* darker red on hover */
+}
+
+/* Sentiment Mood Badges */
+.sentiment-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color: white;
+}
+
+.sentiment-bad {
+  background-color: #d32f2f; /* red */
+}
+
+.sentiment-low {
+  background-color: #ff9800; /* orange */
+}
+
+.sentiment-neutral {
+  background-color: #9e9e9e; /* gray */
+}
+
+.sentiment-good {
+  background-color: #8bc34a; /* light green */
+}
+
+.sentiment-great {
+  background-color: #4caf50; /* deep green */
+}
+
+.gray-out {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.gray-out-table td {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.filter-box button {
+  margin-top: 10px;
+}
+
+
+select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #333;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'10'%20height%3D'7'%20viewBox%3D'0%200%2010%207'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M0%200l5%207%205-7z'%20fill%3D'%23666'%20/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.65rem;
+}
+
+select:focus {
+  border-color: #005B96;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 91, 150, 0.2);
+}

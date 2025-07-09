@@ -1,0 +1,1252 @@
+API Endpoints 
+========================================================================================================
+
+User Authorization : 
+
+    1 - User Creation✅
+
+        Route --> http://127.0.0.1:8000/auth/create
+        Priviliges --> Admin & HR
+        Type --> POST
+
+        BODY :
+        {
+        "username": "Employee",
+        "password": "123456",
+        "role" : "employee"
+        }
+
+        Expected Response: 
+        {
+        "id": "EMP-00010",
+        "username": "Employee",
+        "role": "employee"
+        }
+
+
+
+    2 - User Login✅
+        
+        Route --> http://127.0.0.1:8000/auth/login
+        Priviliges --> All
+        Type --> POST
+
+        BODY :
+        {
+        "username": "admin2",
+        "password": "123456"
+        }
+
+        EXPECTED RESPONSE : 
+        {
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbjIiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NDk0ODcwMTUsInR5cGUiOiJhY2Nlc3MifQ.i0FRRQ6F_cVstB6cH6Aic_TZ8qJ_R9NVI0lD9oYr1_A",
+        "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbjIiLCJleHAiOjE3NTAwOTAwMTUsInR5cGUiOiJyZWZyZXNoIn0.JmryDpdhfEemiCP73F2X3VGqEO1QMNM5kf0jqM5aJIM",
+        "token_type": "bearer",
+        "role": "admin"
+        }   
+
+
+    3 - Fetch Current User Credentials : ✅
+
+        Route --> http://127.0.0.1:8000/auth/me
+        Priviliges --> All
+        TYPE : GET 
+
+        BODY : N/A
+
+        EXEPECTED RESPONSE : 
+        {
+        "id": "ADM-00006",
+        "username": "admin2",
+        "role": "admin"
+        }
+
+-----------------------------------------------------------------------------------------------------------------
+
+News Module : 
+
+    A- News Posts
+
+        1 - Adding a News Post : 
+
+            Route --> http://127.0.0.1:8000/news/add
+            Priviliges --> Admin & HR
+            TYPE : POST
+
+            BODY : 
+            {
+            "title": "AI Will Change the Future",
+            "content": "OpenAI has released powerful new toolsss."
+            }
+
+            EXEPECTED RESPONSE : 
+            {
+            "news_uid": "NEWS-88205977",
+            "title": "AI Will Change the Future",
+            "content": "OpenAI has released powerful new toolsss.",
+            "posted_at": "2025-06-09 05:06 PM",
+            "author": "admin2",
+            "id": 71
+            }
+
+        
+        2 - Deleting a News Post :
+            
+            Route --> http://127.0.0.1:8000/news/delete/12
+            Priviliges --> Admin & HR
+            TYPE : GET
+
+            BODY : N/A
+
+            EXEPECTED RESPONSE : 
+            {
+            "detail": "News deleted successfully"
+            }
+
+    B- Comments on News Posts
+        
+        3 - Posting a Comment on a News Post :
+            
+            Route --> http://127.0.0.1:8000/comment/post
+            Priviliges --> All
+            TYPE : POST
+
+            BODY :
+            {
+            "news_id": 4,
+            "content": "Great update! Thanks."
+            }
+
+            EXEPECTED RESPONSE : 
+            {
+                "news_id": 4,
+                "user_id": 7,
+                "content": "Great update! Thanks.",
+                "commented_at": "2025-06-09 05:47 PM",
+                "id": 17
+            }
+
+        
+        4 - Deleting a Comment from a News Post : 
+
+            Route --> http://127.0.0.1:8000/comment/delete/5
+            Priviliges --> Admin & Comment Owner
+            TYPE : Delete
+
+            BODY : N/A
+
+            EXEPECTED RESPONSE :
+
+            IF(Authorized == TRUE)
+            {
+                "detail": "Comment deleted successfully"
+            }
+
+            OR
+
+            ELSE
+            {
+                "detail": "Permission denied"
+            }
+
+    
+-----------------------------------------------------------------------------------------------------------------
+
+Attendance Module :
+
+    A - Attendance - Sheet 
+
+        1 - Generating Attendance Sheet :
+            Route --> http://127.0.0.1:8000/attendance-sheet/generate
+            Priviliges --> Admin only
+            TYPE : POST
+
+            BODY :
+                session tag in url , ex -- > ?session_tag=2025-06-10-AM
+
+            EXEPECTED RESPONSE : 
+                {
+                "message": "Attendance sheet generated for 8 users."
+                }
+        
+
+
+        2 - Log Attendance ✅
+            Route --> http://127.0.0.1:8000/attendance-sheet/log
+            Priviliges --> HR & Employee
+            TYPE : POST
+
+            BODY : N/A
+
+            EXEPECTED RESPONSE : 
+            {
+                "user_id": 7,
+                "attendance_uid": "7-a185a7",
+                "attendance_date": "2025-06-10T21:26:09.070000",
+                "logged_at": "2025-06-10T21:29:18.873000",
+                "status": "present",
+                "manual_entry": false,
+                "session_tag": "2025-06-10-AM",
+                "source": "scan",
+                "id": 15
+            }
+
+
+        3 - Get All Attendance Records
+            Route --> http://127.0.0.1:8000/attendance-sheet/all
+            Priviliges --> HR & Admin
+            TYPE : GET
+
+            BODY : N/A
+
+            EXEPECTED RESPONSE : 
+                [
+                    {
+                        "user_id": 1,
+                        "attendance_uid": "1-31ffe0",
+                        "attendance_date": "2025-06-10T21:26:09.047000",
+                        "logged_at": null,
+                        "status": null,
+                        "manual_entry": false,
+                        "session_tag": "2025-06-10-AM",
+                        "source": null,
+                        "id": 9
+                    },
+                    {
+                        "user_id": 2,
+                        "attendance_uid": "2-4774c6",
+                        "attendance_date": "2025-06-10T21:26:09.053000",
+                        "logged_at": null,
+                        "status": null,
+                        "manual_entry": false,
+                        "session_tag": "2025-06-10-AM",
+                        "source": null,
+                        "id": 10
+                    },
+                    {
+                        "user_id": 3,
+                        "attendance_uid": "3-651c3d",
+                        "attendance_date": "2025-06-10T21:26:09.057000",
+                        "logged_at": null,
+                        "status": null,
+                        "manual_entry": false,
+                        "session_tag": "2025-06-10-AM",
+                        "source": null,
+                        "id": 11
+                    },
+                    {
+                        "user_id": 4,
+                        "attendance_uid": "4-afe75d",
+                        "attendance_date": "2025-06-10T21:26:09.057000",
+                        "logged_at": null,
+                        "status": null,
+                        "manual_entry": false,
+                        "session_tag": "2025-06-10-AM",
+                        "source": null,
+                        "id": 12
+                    },
+                    {
+                        "user_id": 5,
+                        "attendance_uid": "5-6b53fc",
+                        "attendance_date": "2025-06-10T21:26:09.063000",
+                        "logged_at": null,
+                        "status": null,
+                        "manual_entry": false,
+                        "session_tag": "2025-06-10-AM",
+                        "source": null,
+                        "id": 13
+                    },
+                    {
+                        "user_id": 6,
+                        "attendance_uid": "6-b91e1a",
+                        "attendance_date": "2025-06-10T21:26:09.067000",
+                        "logged_at": null,
+                        "status": null,
+                        "manual_entry": false,
+                        "session_tag": "2025-06-10-AM",
+                        "source": null,
+                        "id": 14
+                    },
+                    {
+                        "user_id": 7,
+                        "attendance_uid": "7-a185a7",
+                        "attendance_date": "2025-06-10T21:26:09.070000",
+                        "logged_at": "2025-06-10T21:29:18.873000",
+                        "status": "present",
+                        "manual_entry": false,
+                        "session_tag": "2025-06-10-AM",
+                        "source": "scan",
+                        "id": 15
+                    },
+                    {
+                        "user_id": 10,
+                        "attendance_uid": "10-8cb170",
+                        "attendance_date": "2025-06-10T21:26:09.073000",
+                        "logged_at": null,
+                        "status": null,
+                        "manual_entry": false,
+                        "session_tag": "2025-06-10-AM",
+                        "source": null,
+                        "id": 16
+                    }
+                ]
+        
+        4 - Edit Attendance Status
+            Route --> http://127.0.0.1:8000/attendance-sheet/update/{attendance_id}?new_status=late
+            Priviliges --> HR & Admin
+            TYPE : PUT
+
+            BODY : N/A
+
+            EXEPECTED RESPONSE : 
+                {
+                    "user_id": 4,
+                    "attendance_uid": "4-afe75d",
+                    "attendance_date": "2025-06-10T21:26:09.057000",
+                    "logged_at": null,
+                    "status": "late",
+                    "manual_entry": true,
+                    "session_tag": "2025-06-10-AM",
+                    "source": null,
+                    "id": 12
+                }
+        
+
+        5 - Clear Attendance Sheet : 
+            Route --> http://127.0.0.1:8000/attendance-sheet/clear
+            Priviliges --> Admin
+            TYPE : DELETE
+
+            BODY : N/A
+
+            EXEPECTED RESPONSE : 
+            {
+                "message": "Attendance sheet cleared."
+            }     
+    
+    B - Attendance - History
+        6 - Append to Attendance History Table : 
+
+            Route --> http://127.0.0.1:8000/attendance-history/push
+            Priviliges --> Admin
+            TYPE : POST
+
+            BODY : N/A
+
+            EXEPECTED RESPONSE : 
+                {
+                    "message": "8 records archived into attendance_history."
+                }
+
+
+        7 - Get History by user : ✅
+
+            Route --> http://127.0.0.1:8000/attendance-history/my
+            Priviliges --> Exclusive to onself 
+            TYPE : GET
+
+            BODY : N/A
+
+            EXEPECTED RESPONSE : 
+            {
+                "message": "Attendance sheet cleared."
+            }
+
+
+
+        8 - Get All Attendance-History Records :
+        
+            Route --> http://127.0.0.1:8000/attendance-history/all
+            Priviliges --> HR & Admin
+            TYPE : GET
+
+            BODY : N/A
+
+            EXEPECTED RESPONSE : 
+                [
+                        {
+                        "attendance_id": 21,
+                        "user_id": 5,
+                        "date": "2025-06-10",
+                        "status": "absent",
+                        "id": 29,
+                        "created_at": "2025-06-10T19:14:05.853000"
+                    },
+                    {
+                        "attendance_id": 22,
+                        "user_id": 6,
+                        "date": "2025-06-10",
+                        "status": "absent",
+                        "id": 30,
+                        "created_at": "2025-06-10T19:14:05.853000"
+                    },
+                    {
+                        "attendance_id": 23,
+                        "user_id": 7,
+                        "date": "2025-06-10",
+                        "status": "absent",
+                        "id": 31,
+                        "created_at": "2025-06-10T19:14:05.853000"
+                    },
+                    {
+                        "attendance_id": 24,
+                        "user_id": 10,
+                        "date": "2025-06-10",
+                        "status": "absent",
+                        "id": 32,
+                        "created_at": "2025-06-10T19:14:05.853000"
+                    }
+                ]
+    
+
+    C - Sick Notes 
+        
+        9 - Submitting Sick notes : ✅
+            Route --> http://127.0.0.1:8000/sick-notes/submit
+            Priviliges --> HR & Employee -  {Exclusively}
+            TYPE : POST
+
+            BODY : 
+            {
+                "attendance_id": 15,
+                "reason": "Fever and fatigue",
+                "file_name": "sick_note_me.pdf"
+            }
+
+            EXEPECTED RESPONSE : 
+            {
+                "user_id": 7,
+                "attendance_uid": "7-a185a7",
+                "attendance_date": "2025-06-10T21:26:09.070000",
+                "logged_at": "2025-06-10T21:29:18.873000",
+                "status": "present",
+                "manual_entry": false,
+                "session_tag": "2025-06-10-AM",
+                "source": "scan",
+                "id": 15
+            }
+
+        10 - Sick Note Approval or Rejection :
+
+            Route --> http://127.0.0.1:8000/sick-notes/review/
+            Priviliges --> HR 
+            TYPE : PUT
+
+            BODY :  
+            in URL :
+                5?decision=approved&comment=Doctor note attached
+
+            EXEPECTED RESPONSE : 
+            {
+                "attendance_id": 22,
+                "reason": "Fever and fatigue",
+                "status": "approved",
+                "review_comments": "Doctor note attached",
+                "file_name": "sick_note_me.pdf",
+                "submitted_at": "2025-06-11T00:11:57.490000",
+                "id": 5
+            }
+
+
+        11 - Fetch Sick Note by User Session :
+
+            Route --> http://127.0.0.1:8000/sick-notes/my
+            Priviliges --> Current User Exclusive
+            TYPE : GET
+
+            BODY :  
+            in URL :
+                5?decision=approved&comment=Doctor note attached
+
+            EXEPECTED RESPONSE : 
+            {
+                "attendance_id": 23,
+                "reason": "Fever and fatigue",
+                "status": "pending",
+                "review_comments": null,
+                "file_name": "sick_note_me.pdf",
+                "submitted_at": "2025-06-11T00:08:39.263000",
+                "id": 2
+            }
+
+        
+        12 - Fetch All Sick Notes :
+            
+            Route --> http://127.0.0.1:8000/sick-notes/all
+            Priviliges --> HR 
+            TYPE : GET
+
+            BODY :  N/A
+
+            EXEPECTED RESPONSE : 
+
+            [
+                {
+                    "attendance_id": 2,
+                    "reason": "Flu",
+                    "status": "Pending",
+                    "review_comments": "Will review by HR",
+                    "file_name": "flu_note.pdf",
+                    "submitted_at": "2025-06-01T09:00:00",
+                    "id": 1
+                },
+                {
+                    "attendance_id": 23,
+                    "reason": "Fever and fatigue",
+                    "status": "pending",
+                    "review_comments": null,
+                    "file_name": "sick_note_me.pdf",
+                    "submitted_at": "2025-06-11T00:08:39.263000",
+                    "id": 2
+                },
+                {
+                    "attendance_id": 23,
+                    "reason": "Fever and fatigue",
+                    "status": "pending",
+                    "review_comments": null,
+                    "file_name": "sick_note_me.pdf",
+                    "submitted_at": "2025-06-11T00:09:04.377000",
+                    "id": 3
+                },
+                {
+                    "attendance_id": 17,
+                    "reason": "Fever and fatigue",
+                    "status": "pending",
+                    "review_comments": null,
+                    "file_name": "sick_note_me.pdf",
+                    "submitted_at": "2025-06-11T00:09:17.517000",
+                    "id": 4
+                },
+                {
+                    "attendance_id": 22,
+                    "reason": "Fever and fatigue",
+                    "status": "approved",
+                    "review_comments": "Doctor note attached",
+                    "file_name": "sick_note_me.pdf",
+                    "submitted_at": "2025-06-11T00:11:57.490000",
+                    "id": 5
+                }
+            ]
+
+
+------------------------------------------------------------------------------------------------------------
+
+Payroll Module : 
+
+    A - Payroll - Fixed : 
+        
+        1 - Generate Fixed Salary for all (wont update if exists): 
+            
+            Route --> http://127.0.0.1:8000/payroll-fixed/generate
+            Privilige --> Admin & HR
+            TYPE --> POST
+
+            BODY :
+            {
+                "default_salary" : "8000"
+            }
+
+            EXPECTED RESPONSE : 
+            {
+            "message": "Base salaries generated for 8 users."
+            }
+
+        2 - Updating Fixed Salary : 
+
+            Route --> http://127.0.0.1:8000/payroll-fixed/update/{user_id}
+            Privilige --> Admin & HR
+            TYPE --> PUT
+
+            BODY :
+            {
+                "base_salary": 8000.00
+            }
+
+            EXPECTED RESPONSE : 
+            {
+                "user_id": 2,
+                "base_salary": 9500.0,
+                "id": 2,
+                "user": {
+                    "id": 2,
+                    "username": "sara.hr",
+                    "role": "hr"
+                }
+            }
+
+        3 - Fetch Fixed Salary :
+
+            Route --> http://127.0.0.1:8000/payroll-fixed/get/{user_id}
+            Privilige -- > Admin & HR & Employee(Exclusive)
+            TYPE --> GET
+
+            BODY : N/A
+
+            EXPECTED RESPONSE : 
+
+        4 - Fetch all Fixed Salaries : 
+
+            Route --> http://127.0.0.1:8000/payroll-fixed/get/all
+            Privilige --> Admin & HR
+            TYPE --> GET 
+
+            BODY : N/A
+
+            EXPECTED RESPONSE : 
+
+    B - Payroll :
+
+        1 - Generating Payroll Sheet (Volatile):
+
+            Route --> http://127.0.0.1:8000/payroll/sheet
+            Privilige --> Admin & HR
+            TYPE --> POST 
+
+            BODY : N/A
+
+            EXPECTED RESPONSE : 
+            {
+                "message": "Payroll sheet created for 8 users."
+            }
+
+        2 -  Get All Payroll Records :
+
+            Route --> http://127.0.0.1:8000/payroll/sheet/all
+
+            BODY : N/A
+
+            EXPECTED RESPONSE : 
+
+            All payroll records
+
+
+        3 - Get Payroll by user id : 
+            
+            Route --> http://127.0.0.1:8000/payroll/sheet/user/2
+            Privilige --> Admin & HR & Employee(exclusive)
+
+            BODY : N/A
+
+            EXPECTED RESPONSE : 
+            {
+            "user_id": 2,
+            "salary": 9500.0,
+            "status": "draft",
+            "id": 2,
+            "created_at": "2025-06-11T11:56:26.420000",
+            "last_updated": "2025-06-11T11:56:26.420000",
+            "user": {
+                "id": 2,
+                "username": "sara.hr",
+                "role": "hr"
+                }
+            }  
+        
+        4 - Update Payroll-dynamic:
+
+            Route -->  http://127.0.0.1:8000/payroll/sheet/update/1
+            Privilige --> Admin & HR
+            TYPE --> PUT
+
+            BODY : 
+            {
+            "salary": 9000,
+            "status": "approved"
+            }
+
+            EXPECTED RESPONSE : 
+            {
+                "user_id": 1,
+                "salary": 9000.0,
+                "status": "approved",
+                "id": 1,
+                "created_at": "2025-06-11T11:56:26.413000",
+                "last_updated": "2025-06-11T12:08:58.880000",
+                "user": {
+                    "id": 1,
+                    "username": "john.doe",
+                    "role": "employee"
+                }
+            }
+
+    C - Payroll - History :
+
+        1 - Append to Payroll History : 
+
+            Route -->  http://127.0.0.1:8000/payroll-history/process
+            Privilige --> Admin & HR
+            TYPE --> POST
+
+            BODY : 
+            {
+             "period": "2025-06"
+            }
+
+            EXPECTED RESPONSE : 
+            {
+            "message": "Archived 8 payroll records to history for period 2025-06."
+            }
+
+
+        2 - Fetch all payroll history records : 
+
+            ROUTE -->  http://127.0.0.1:8000/payroll-history/all
+            Privilige --> Admin & HR
+            TYPE --> GET
+
+            BODY --> N/A
+
+            EXPECTED RESPONSE: 
+            
+                All History Records
+
+
+        3 - Fetch Payroll history by user id :
+
+            ROUTE -->  http://127.0.0.1:8000/payroll-history/user/{user_id}
+            Privilige --> ALL
+            TYPE --> GET
+
+            BODY --> N/A
+
+            EXPECTED RESPONSE: 
+            
+                User History records
+
+    
+
+    D - Appraisals
+
+        1 - Add an Appraisal :
+
+            ROUTE -->  http://127.0.0.1:8000/appraisals/add
+            Privilige --> HR & Admin
+            TYPE --> POST
+
+            BODY :
+            {
+                "payroll_id": "65",
+                "amount": "200"
+            }
+
+            EXPECTED RESPONSE: 
+                {
+                    "payroll_id": 65,
+                    "amount": 200.0,
+                    "appraisal_date": "2025-06-12T17:32:15.430000",
+                    "id": 4
+                }
+
+
+        2 - Fetch appraisal by id
+        
+            ROUTE -->  http://127.0.0.1:8000/appraisals/get/{appraisal_id}
+            Privilige --> HR & Admin
+            TYPE --> GET
+
+            BODY : N/A
+
+            EXPECTED RESPONSE: 
+                {
+                    "payroll_id": 65,
+                    "amount": 200.0,
+                    "appraisal_date": "2025-06-12T17:32:15.430000",
+                    "id": 4
+                }
+        
+        3 - Fetch Appraisal by payroll id (more usable)
+        
+            ROUTE -->  http://127.0.0.1:8000/appraisals/payroll/{payroll_id}
+            Privilige --> HR & Admin
+            TYPE --> GET
+
+            BODY : N/A
+
+
+            EXPECTED RESPONSE: 
+                {
+                    "payroll_id": 65,
+                    "amount": 200.0,
+                    "appraisal_date": "2025-06-12T17:32:15.430000",
+                    "id": 4
+                }
+
+       4 - Fetch Appraisal by user id (much more usable)
+        
+            ROUTE -->  http://127.0.0.1:8000/appraisals/user/{user_id}
+            Privilige --> HR & Admin
+            TYPE --> GET
+
+            BODY : N/A
+
+            EXPECTED RESPONSE: 
+            {
+                "detail": "No appraisals found for this user."
+            }
+
+            OR
+
+            [
+                {
+                    "payroll_id": 65,
+                    "amount": 200.0,
+                    "appraisal_date": "2025-06-12T17:32:15.430000",
+                    "id": 4
+                }
+            ]
+
+    
+    E - Penalties : 
+
+        1 - Add a Penalty 
+            ROUTE -->  http://127.0.0.1:8000/penalties/add
+            Privilige --> HR & Admin
+            TYPE --> POST
+
+            BODY : 
+            {
+            "payroll_id": 66,
+            "amount": 200,
+            "reason": "Late submission"
+            }            
+
+            EXPECTED RESPONSE: 
+            {
+                "payroll_id": 66,
+                "amount": 200.0,
+                "reason": "Late submission",
+                "id": 3
+            }
+
+        2 - Fetch Penalty by User id :
+
+            ROUTE -->  http://127.0.0.1:8000/penalties/user/{user_id}
+            Privilige --> HR & Admin
+            TYPE --> GET
+
+            BODY --> N/A
+
+
+            EXPECTED RESPONSE: 
+            {
+                "payroll_id": 66,
+                "amount": 200.0,
+                "reason": "Late submission",
+                "id": 3
+            }       
+
+
+
+
+    F - Benefits Catalog : 
+
+        1 - add a benefit to benefit catalog : 
+            ROUTE -->  http://127.0.0.1:8000/catalog/benefit/add
+            Privilige --> HR & Admin
+            TYPE --> POST
+
+            BODY : 
+            {
+            "name": "Meal Voucher",
+            "description": "Provides a monthly meal stipend.",
+            "amount": 300
+            }
+
+
+            EXPECTED RESPONSE: 
+        
+        2 - Fetch Benefit catalog :
+            
+            ROUTE -->  http://127.0.0.1:8000/catalog/benefit/list
+            Privilige --> HR & Admin
+            TYPE --> POST
+
+            BODY : N/A
+
+
+        3 - Delete Benefit : 
+
+            ROUTE -->  http://127.0.0.1:8000/catalog/benefit/{benefit_id}
+            Privilige --> HR & Admin
+            TYPE --> DELETE
+
+            BODY : N/A
+
+
+
+    G - Benefits : 
+
+        1 - Adding a Dynamic Benefit : 
+
+            ROUTE -->  http://127.0.0.1:8000/benefit/assign
+            Privilige --> HR & Admin
+            TYPE --> POST
+
+            BODY : 
+			{
+    "user_id" : "1" , 
+    "benefit_catalog_id" : 7
+		}
+                
+
+
+            EXPECTED RESPONSE: 
+
+
+        2 - Fetch Benefit by User id : 
+           
+            ROUTE -->  http://127.0.0.1:8000/benefit/user/{user_id}
+            Privilige --> HR & Admin & User exclusive
+            TYPE --> GET
+
+            BODY : N/A
+
+
+            EXPECTED RESPONSE: 
+			[
+    		{
+        	"id": 52,
+        	"amount": 250.0,
+        	"benefit_catalog_id": 7,
+        	"user_id": 3
+    		}
+			]
+
+
+
+	H - Raise-Requests : 
+
+
+1 - Submit a raise request
+
+           
+            ROUTE -->  http://127.0.0.1:8000/raise/submit
+            Privilige --> Employee & HR
+            TYPE --> POST
+
+            BODY : 
+			{
+  "payroll_id": 89,
+  "requested_amount": 500.0,
+  "reason": "Increased responsibility"
+}
+
+
+
+            EXPECTED RESPONSE: 
+{
+    "payroll_id": 89,
+    "requested_amount": 500.0,
+    "reason": "Increased responsibility",
+    "status": "pending",
+    "requested_at": "2025-06-18 08:28 PM",
+    "id": 4,
+    "request_uid": "RR-250618-DC2OWD"
+}
+		
+
+
+
+
+2 - Reviewing a submitted raise request
+
+           
+            ROUTE -->  http://127.0.0.1:8000/raise/review
+            Privilige --> HR & Admin
+            TYPE --> PUT
+
+            BODY : 
+{
+  "request_id": 3,
+  "status": "approved",
+  "review_comment": "Justified increase"
+}
+
+
+
+            EXPECTED RESPONSE: 
+
+raise request approved 
+
+
+
+3 - Fetch Raise Request by payroll or all
+
+	            ROUTE -->  http://127.0.0.1:8000/raise/all & http://127.0.0.1:8000/raise/payroll/{payroll_id}
+				
+            Privilige --> HR & Admin & User exclusive
+            TYPE --> PUT
+
+            BODY :  N/A
+
+
+
+            EXPECTED RESPONSE: 		
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+I - Training and Skills :
+
+	1 - Fetch All Training Course
+		Route --> http://127.0.0.1:8000/skills/courses
+		Privilige --> HR & Admin
+		Type --> GET
+
+		BODY --> N/A 
+
+		EXPECTED RESPONSE :
+			All Training courses
+
+
+	2 - Add a Training Course
+		Route --> http://127.0.0.1:8000/skills/courses
+		Privilige --> HR & Admin
+		Type --> POST
+
+		BODY --> {
+  "course_name": "Data Science Bootcamp",
+  "skill_targeted": "Data Science",
+  "difficulty_level": 4,
+  "cost": 450.0,
+  "duration_days": 10
+} 
+
+		EXPECTED RESPONSE :
+			The added training course data
+
+
+
+
+	3 - Delete a Training Course
+		Route --> http://127.0.0.1:8000/skills/courses/{course_id}
+		Privilige --> HR & Admin
+		Type --> DELETE
+
+		BODY --> N/A 
+
+		EXPECTED RESPONSE :
+			{
+    "message": "Course with ID 2 deleted successfully."
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	3 - Fetch user skill 
+		Route --> http://127.0.0.1:8000/skills/user-skills/{user_id}
+		Privilige --> HR & Admin
+		Type --> GET
+
+		BODY --> N/A 
+
+		EXPECTED RESPONSE :
+			User skills
+
+
+	
+	4 - Assign a skill to user
+
+		Route --> http://127.0.0.1:8000/skills/assign-skill/1
+		Privilige --> HR & Admin
+		Type --> GET
+
+		BODY --> N/A 
+
+		EXPECTED RESPONSE :
+			User skills
+
+
+
+
+
+	5 - Assign a training to user
+
+		Route --> http://127.0.0.1:8000/training/assign
+		Privilige --> HR & Admin
+		Type --> GET
+
+		BODY --> {
+  "user_id": 7,
+  "training_course_id": 3
+}
+
+		EXPECTED RESPONSE :
+			Training data added
+
+
+	6 - Check user training status
+		Route -->  http://127.0.0.1:8000/training/status/1
+		Privilige --> HR & Admin
+		Type --> GET
+
+		BODY --> N/A 
+
+		EXPECTED RESPONSE :
+			User training data
+
+
+	7 - Delete user training 
+		Route -->  http://127.0.0.1:8000/training/remove/1
+		Privilige --> HR & Admin
+		Type --> GET
+
+		BODY --> N/A 
+
+		EXPECTED RESPONSE :
+			Deletion
+
+
+
+
+
+
+
+	8 - Get users in department:
+		
+		Route -->  http://127.0.0.1:8000/departments/1/users
+		Privilige --> HR & Admin
+		Type --> GET
+
+		BODY --> N/A 
+
+		EXPECTED RESPONSE :
+			All users in department
+
+		
+
+
+
+
+
+	9 - Get skills required for department:
+		
+		Route -->  http://127.0.0.1:8000/departments/1/required-skills
+		Privilige --> HR & Admin
+		Type --> GET
+
+		BODY --> N/A 
+
+		EXPECTED RESPONSE :
+			all required skills
+
+
+
+
+	10 - Get all skills avilable:
+		
+		Route --> http://127.0.0.1:8000/departments/skills/all
+		Privilige --> HR & Admin
+		Type --> GET
+
+		BODY --> N/A 
+
+		EXPECTED RESPONSE :
+			All skills in all departments
+
+
+	11 - Add a new Skill :
+		
+		Route -->  http://127.0.0.1:8000/departments/skills/add
+		Privilige --> HR & Admin
+		Type --> GET
+
+		BODY --> {
+  "skill_name": "Conflict Resolution",
+  "cost": 120.0
+}
+
+		EXPECTED RESPONSE :
+			All users in department
+
+
+
+	12 - Delete a new Skill :
+		
+		Route -->  http://127.0.0.1:8000/departments/skills/remove/18
+		Privilige --> HR & Admin
+		Type --> GET
+
+		BODY --> 
+
+		EXPECTED RESPONSE :
+			Deletion confirmation
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+J - Prediction Models
+
+
+	1 - performance_prediction
+		Route --> http://127.0.0.1:8000/predict/performance/{user_id}
+		Privilige --> HR & Admin
+		Type --> POST
+
+		BODY --> N/A 
+
+		EXPECTED RESPONSE :
+	{
+    "user_id": 16,
+    "performance_score": 1
+}
+
+
+	2 - attrition risk 
+
+		Route --> http://127.0.0.1:8000/predict/attrition/{user_id}
+		Privilige --> HR & Admin
+		Type --> POST
+
+		BODY --> N/A 
+
+		EXPECTED RESPONSE :
+{
+    "user_id": 16,
+    "risk_class": 1,
+    "risk_level": "Medium"
+}
+
+
+
+	3 - benefit to cost ratio
+
+		Route --> http://127.0.0.1:8000/predict/bcr/{user_id}
+		Privilige --> HR & Admin
+		Type --> POST
+
+		BODY --> N/A 
+
+		EXPECTED RESPONSE :
+{
+    "user_id": 16,
+    "bcr_score": 0.021
+}
+
+
+	4 - Sentiment Score 
+
+		Route --> http://127.0.0.1:8000/predict/bcr/{user_id}
+		Privilige --> HR & Admin
+		Type --> POST
+
+		BODY --> N/A 
+
+		EXPECTED RESPONSE :
+{
+    "user_id": 16,
+    "bcr_score": 0.021
+}
+	
+

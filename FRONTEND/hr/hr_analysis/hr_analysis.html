@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HR Analytics</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" href="icon2.png" type="image/jpg" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+
+<body>
+  <div class="container">
+    <h2>HR Analytics Dashboard</h2>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button onclick="showChart('attendance')">Attendance</button>
+      <button onclick="showChart('payroll')">Payroll</button>
+      <button onclick="showChart('departments')">Departments</button>
+      <button onclick="showChart('completion_rate')">Completion Rate</button>
+      <button onclick="showChart('workload')">Workload Handling</button>
+      <button onclick="showChart('raise_requests')">Raise Requests</button>
+      <button onclick="showChart('interaction_summary')">Interaction Summary</button>
+    </div>
+
+    <!-- Chart Container -->
+    <div id="chart-container" style="display:none;">
+      <canvas id="analyticsChart"></canvas>
+    </div>
+
+    <!-- Chart Types -->
+    <div id="chart-type-buttons" style="display: none;">
+      <button onclick="updateChartType('bar')">Bar</button>
+      <button onclick="updateChartType('pie')">Pie</button>
+      <button onclick="updateChartType('line')">Line</button>
+      <button onclick="updateChartType('radar')">Radar</button><br><br>
+      <button onclick="closeChart()">Close</button>
+    </div>
+  </div>
+
+  <script src="hr_analysis.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BCR Prediction</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Benefit-to-Cost Ratio (BCR) Prediction</h2>
+
+    <!-- Input bar -->
+    <div class="filter-box">
+      <input type="number" id="userIdInput" placeholder="Enter User ID" />
+      <button onclick="predictBCR()">Predict</button>
+      <button onclick="viewBCRHistory()">View History</button>
+    </div>
+
+    <!-- History Box -->
+    <div id="historyBox" class="portal-box" style="display: none;">
+      <h3>BCR Prediction History</h3>
+      <ul id="historyList"></ul>
+    </div>
+
+    <!-- Prediction result -->
+    <div id="resultBox" class="portal-box" style="display: none;">
+      <h3>Prediction Result</h3>
+      <p id="predictionOutput"></p>
+
+      <!-- Action buttons -->
+      <div id="actionBox" style="display: none; margin-top: 1rem;"></div>
+    </div>
+
+    <!-- User list -->
+    <h3>All Users</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Username</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody id="userTableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- JS Logic -->
+  <script src="benefit_to_cost_ratio.js"></script>
+</body>
+</html>

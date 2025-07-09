@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR News Management</title>
+  <script src="hr_news.js" defer></script>
+  <link rel="icon" href="icon2.png" type="image/jpg" />
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+  <h2>HR News Management</h2>
+
+  <h3>Create News</h3>
+  <form id="newsForm">
+    <input type="text" id="news-title" placeholder="Title" required />
+    <textarea id="news-content" placeholder="Content" required></textarea>
+    <button type="submit">Add News</button>
+  </form>
+
+  <h3>News Articles</h3>
+  <ul id="newsList"></ul>
+
+</body>
+</html>

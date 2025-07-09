@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll Sheet</title>
+  <link rel="icon" href="icon2.png" type="image/jpg">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <h1>Payroll Sheet Management</h1>
+
+  <!-- Generate Payroll Sheet -->
+  <div class="section" id="generate-section">
+    <h3>Generate New Payroll Sheet</h3>
+    <button onclick="generatePayrollSheet()">Generate</button>
+  </div>
+
+  <!-- Payroll Sheet Table -->
+  <div class="section">
+    <h3>All Payroll Records</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Username</th>
+          <th>Role</th>
+          <th>Salary</th>
+          <th>Status</th>
+          <th>Created</th>
+          <th>Last Updated</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="payroll-sheet-body">
+        <!-- Filled by JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="hr_payroll_sheet.js"></script>
+</body>
+</html>

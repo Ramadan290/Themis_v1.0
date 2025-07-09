@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sentiment Score Analysis</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Emotional Outlook Prediction</h2>
+
+    <!-- Input -->
+    <div class="filter-box">
+      <input type="number" id="userIdInput" placeholder="Enter User ID" />
+      <button onclick="predictSentiment()">Predict</button>
+      <button onclick="viewSentimentHistory()">View History</button>
+    </div>
+    
+    <!-- History Box -->
+    <div id="historyBox" class="portal-box" style="display: none;">
+      <h3>Sentiment Score History</h3>
+      <ul id="historyList"></ul>
+    </div>
+
+    <!-- Result -->
+    <div id="resultBox" class="portal-box" style="display: none;">
+      <h3>Predicted Sentiment</h3>
+      <p id="sentimentLabel" style="font-size: 1.4rem; font-weight: bold;"></p>
+      <p id="sentimentExplanation" style="margin-top: 1rem;"></p>
+
+      <div id="actionBox" style="display: none; margin-top: 1.5rem;"></div>
+    </div>
+
+    <!-- User Table -->
+    <h3>All Users</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Username</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody id="userTableBody"></tbody>
+    </table>
+  </div>
+
+  <script src="sentiment_analysis.js"></script>
+</body>
+</html>

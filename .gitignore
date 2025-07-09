@@ -1,0 +1,62 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+
+# Environment files
+.env
+.env.*
+
+# Log files
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# Model files
+*.h5
+*.hdf5
+*.joblib
+*.tflite
+*.pt
+
+# Jupyter and Notebooks
+.ipynb_checkpoints/
+
+# Compiled models or temp folders
+checkpoints/
+outputs/
+models/
+runs/
+saved_models/
+cache/
+temp/
+
+# Frontend build (if any)
+node_modules/
+dist/
+build/
+
+# Database dumps
+*.sqlite3
+*.db
+*.bak
+
+# Test and Debug
+*.pytest_cache/
+coverage/
+htmlcov/
+
+# Static Files Cache
+*.pickle
+*.pkl
+
+# TensorFlow
+events.out.tfevents.*
